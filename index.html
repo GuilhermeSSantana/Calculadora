@@ -12,11 +12,11 @@
         <h1>Guilherme Santana</h1>
         <div class="calculadora">
             <h1>Calculadora</h1>
-            <p id="resultado">test</p>
+            <p id="resultado"></p>
             <table>
                 <tr>
-                    <td><button class="btn" onclick="insert('C')">C</button></td>
-                    <td><button class="btn" onclick="insert('<')"><</button></td>
+                    <td><button class="btn" onclick="clean()">C</button></td>
+                    <td><button class="btn" onclick="back()"><</button></td>
                     <td><button class="btn" onclick="insert('/')">/</button></td>
                     <td><button class="btn" onclick="insert('X')">X</button></td>
                 </tr>
@@ -36,7 +36,7 @@
                     <td><button class="btn" onclick="insert('1')">1</button></td>
                     <td><button class="btn" onclick="insert('2')">2</button></td>
                     <td><button class="btn" onclick="insert('3')">3</button></td>
-                    <td rowspan="2"><button class="btn" style="height: 106px;" onclick="insert('=')">=</button></td>
+                    <td rowspan="2"><button class="btn" style="height: 106px;" onclick="calcukar()">=</button></td>
                 </tr>
                 <tr>
                     <td colspan="2"><button class="btn" style="width: 106px;" onclick="insert('0')">0</button></td>
@@ -48,8 +48,31 @@
     <script>
         function insert(num)
         {
-            document.getElementById('resultado').innerHTML = num;
+            var numero = document.getElementById('resultado').innerHTML;
+            document.getElementById('resultado').innerHTML = numero + num;
         }
+        function clean()
+        {
+            document.getElementById('resultado').innerHTML = '';
+        }
+        function back()
+        {
+            var resultado =  document.getElementById('resultado').innerHTML;
+            document.getElementById('resultado').innerHTML = resultado.substring(0, resultado.length -1);
+        }
+        function calcukar()
+        {
+            var resultado =  document.getElementById('resultado').innerHTML;
+            if(resultado)
+            {
+                document.getElementById('resultado').innerHTML = eval(resultado);
+            }
+            else
+            {
+                document.getElementById('resultado').innerHTML = "Erro3"
+            }
+        }
+
     </script>
 </body>
 </html>
